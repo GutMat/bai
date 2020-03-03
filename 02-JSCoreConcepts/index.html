@@ -42,6 +42,29 @@
                 }
 
                 countSurfaceArea(a,b,c);
+
+                // Display natural nums
+                let natural = [2,6,10,14]
+                natural.map((num) => {
+                    return console.log(num);
+                });
+
+                function naturalDisplayFor(arr){
+                    arr.forEach(function(num) {
+                        console.log(num);
+                    }); 
+                }
+
+                function naturalDisplayWhile(arr){
+                    let count = 0
+                    while(arr[count]){
+                        console.log(arr[count]);
+                        count++;
+                    }
+                }
+
+                naturalDisplayFor(natural);
+                naturalDisplayWhile(natural);
             </script>
     </head>
 <body>
