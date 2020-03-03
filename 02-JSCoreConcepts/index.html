@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <script>
+                title = "dr";
+                name = "Mateusz";
+                surname = 'Kubicki';
+                street = 'Długa 15';
+                city = 'Kraków';
+                zip = '30-781';
+                country = 'Poland';
+
+                console.log(title +
+                    " " + name +
+                    " " + surname +
+                    " " + street +
+                    " " + city +
+                    " " + zip +
+                    " " + country)
+
+                console.log(title +
+                    " " + name +
+                    " " + surname + "\n" +
+                    "ul. " + street + "\n" +
+                    city +
+                    " " + zip + "\n" +
+                    country)
+
+                // boki trójkąta
+                a = 3;
+                b = 4;
+                c = 5;
+                h = 7
+
+                // Pole trókąta o bokach ..., ... oraz ... wynosi ... .
+
+                function countSurfaceArea(a,b,c){
+                    let halfOfPerimeter = (a+b+c)/2
+                    console.log(halfOfPerimeter)
+                    let surfaceArea = Math.sqrt(halfOfPerimeter*(halfOfPerimeter-a)*(halfOfPerimeter-b)*(halfOfPerimeter-c))
+                    console.log("Pole trókąta o bokach " + a + ", " + b + ", " + c + " wynosi: " + surfaceArea)
+                }
+
+                countSurfaceArea(a,b,c);
+            </script>
+    </head>
+<body>
+
+<h2>JS BAI Lesson #1</h2>
+
+
+
+</body>
+</html> 
