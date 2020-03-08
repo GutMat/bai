@@ -10,6 +10,7 @@
                 zip = '30-781';
                 country = 'Poland';
 
+                console.log("Excercise 1 - Strings \n\n")
                 console.log(title +
                     " " + name +
                     " " + surname +
@@ -26,6 +27,7 @@
                     " " + zip + "\n" +
                     country)
 
+                console.log("Excercise 2 - Herons formula \n\n")
                 // boki trójkąta
                 a = 3;
                 b = 4;
@@ -36,23 +38,30 @@
 
                 function countSurfaceArea(a,b,c){
                     let halfOfPerimeter = (a+b+c)/2
-                    console.log(halfOfPerimeter)
                     let surfaceArea = Math.sqrt(halfOfPerimeter*(halfOfPerimeter-a)*(halfOfPerimeter-b)*(halfOfPerimeter-c))
                     console.log("Pole trókąta o bokach " + a + ", " + b + ", " + c + " wynosi: " + surfaceArea)
                 }
 
                 countSurfaceArea(a,b,c);
 
+                console.log("Excercise 3 - loops \n\n")
                 // Display natural nums
                 let natural = [2,6,10,14]
+                console.log("Display with map")
                 natural.map((num) => {
                     return console.log(num);
                 });
 
-                function naturalDisplayFor(arr){
+                function naturalDisplayForEach(arr){
                     arr.forEach(function(num) {
                         console.log(num);
                     }); 
+                }
+
+                function naturalDisplayFor(arr){
+                    for (i = 0; i < arr.length; i++) {
+                            console.log(arr[i]);
+                        }
                 }
 
                 function naturalDisplayWhile(arr){
@@ -63,7 +72,11 @@
                     }
                 }
 
+                console.log("Display with forEach")
+                naturalDisplayForEach(natural);
+                console.log("Display with for")
                 naturalDisplayFor(natural);
+                console.log("Display with while")
                 naturalDisplayWhile(natural);
             </script>
     </head>
