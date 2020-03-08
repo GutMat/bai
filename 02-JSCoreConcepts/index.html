@@ -78,6 +78,26 @@
                 naturalDisplayFor(natural);
                 console.log("Display with while")
                 naturalDisplayWhile(natural);
+
+                console.log("Excercise 4 - Functions \n\n")
+                function isCar(car1, car2, car3) {
+                    if(car1 === car2 & car2 === car3){
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+
+                console.log(isCar(true, true, true));
+                console.log(isCar(false, false, false));
+                console.log(isCar(true, true, false));
+                console.log(isCar(false, false, true));
+                console.log(isCar(true, false, true));
+
+                console.log("Excercise 5 - Arrow Functions \n\n")
+                let trapezoidSurfaceArea = (a, b, h) => console.log("Surface area of trapezoid with sides "
+                     + a + ", " + b + " and height: " + h + " is equall: " + 1/2*(a + b)*h)
+                trapezoidSurfaceArea(5, 7, 3);
             </script>
     </head>
 <body>
