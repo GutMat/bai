@@ -2,13 +2,13 @@
 <html>
     <head>
             <script>
-                title = "dr";
-                name = "Mateusz";
-                surname = 'Kubicki';
-                street = 'Długa 15';
-                city = 'Kraków';
-                zip = '30-781';
-                country = 'Poland';
+                const title = "dr";
+                const name = "Mateusz";
+                const surname = 'Kubicki';
+                const street = 'Długa 15';
+                const city = 'Kraków';
+                const zip = '30-781';
+                const country = 'Poland';
 
                 console.log("Excercise 1 - Strings \n\n")
                 console.log(title +
@@ -29,10 +29,10 @@
 
                 console.log("Excercise 2 - Herons formula \n\n")
                 // boki trójkąta
-                a = 3;
-                b = 4;
-                c = 5;
-                h = 7
+                const a = 3;
+                const b = 4;
+                const c = 5;
+                const h = 7
 
                 // Pole trókąta o bokach ..., ... oraz ... wynosi ... .
 
@@ -59,7 +59,7 @@
                 }
 
                 function naturalDisplayFor(arr){
-                    for (i = 0; i < arr.length; i++) {
+                    for (let i = 0; i < arr.length; i++) {
                             console.log(arr[i]);
                         }
                 }
@@ -98,6 +98,72 @@
                 let trapezoidSurfaceArea = (a, b, h) => console.log("Surface area of trapezoid with sides "
                      + a + ", " + b + " and height: " + h + " is equall: " + 1/2*(a + b)*h)
                 trapezoidSurfaceArea(5, 7, 3);
+
+                console.log("Excercise 6 - Ordering \n\n")
+                let numbers = [8,3,2,1,5,4,6];
+                const reverse = function(arr) {
+                    arrReversed = [];
+                    arr.forEach(item => arrReversed.push(item));
+                    arrReversed.reverse();
+                    return arrReversed;
+                }
+
+                const sort = function(arr) {
+                    arrSorted = arr.sort();
+                    return arrSorted;
+                }
+
+                const even = function(arr) {
+                    let arrEven = [];
+                    arr.map(num => num % 2 == 0 ? arrEven.push(num) : null )
+                    return arrEven;
+                }
+
+                console.log(numbers);
+                console.log(reverse(numbers));
+                console.log(even(numbers));
+                console.log(reverse(even(numbers)));
+                console.log(even(sort(numbers)));
+
+                console.log("Excercise 7 - Random Maths \n\n")
+                const rndGenerator = (bottomRange, upperRange, number) => {
+                    let rndArr = [];
+                    for(i = 0; i < number; i++){
+                        min = Math.ceil(bottomRange);
+                        max = Math.floor(upperRange);
+                        rndArr.push(Math.floor(Math.random() * (max - min + 1)) + min);
+                    }
+                    return rndArr;
+                }
+
+                console.log(rndGenerator(5, 20, 10));
+
+                const displayRnd = arr => {
+                    arr.map(num => console.log(num));
+                }
+
+                displayRnd(rndGenerator(5, 20, 10));
+            </script>
+            <script>
+                class Person {
+                    name;
+                    surname;
+
+                    constructor(name, surname){
+                        this.name = name;
+                        this.surname = surname;
+                    }
+
+                    displayPersonalDetails = () => {
+                        console.log(this.name + " " + this.surname.toUpperCase());
+                        console.log(this.name.substring(0,1) + "." + this.surname.substring(0,1))
+                    }
+                }
+
+                let personOne = new Person("Andrew", "Golota");
+                personOne.displayPersonalDetails();
+                let personTwo = new Person("Mateusz", "Gut");
+                personTwo.displayPersonalDetails();
             </script>
     </head>
 <body>
