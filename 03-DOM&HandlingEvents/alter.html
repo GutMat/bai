@@ -6,8 +6,8 @@
 	</head>
 	<body>
 		<h1>Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+		<h3 onclick="displayPart2(this)">Pink Floyd</h3>
+		<p onclick="displayAsItalic(this)">We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
@@ -18,9 +18,16 @@
 		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
-		
+
 		<script>
-			// a JavaScript code here ...
+			function displayPart2(element) {
+				let pTag = document.getElementsByTagName("p")
+				pTag[1].style.visibility = "visible"
+			}
+			function displayAsItalic(element) {
+				let pTag = document.getElementsByTagName("p")
+				pTag[0].style.fontStyle = "italic"
+			}
 			
 		</script>
 	</body>
