@@ -5,9 +5,30 @@
 		<meta charset="UTF-8">
 	</head>
 	<body>
+		<div id="table"></div>
 		<script>
-			// a JavaScript code here ...
-			
+			let tableElement = document.createElement("table")
+			tableElement.setAttribute("border", "1")
+			tableElement.style.width = "250px"
+			tableElement.style.height = "60px"
+			tableElement.style.borderStyle = "solid"
+			tableElement.style.textAlign = "center"
+			tableElement.style.borderCollapse = "collapse"
+			let tableBody = document.createElement('tbody');
+			let count = 1
+			for (let i = 0; i < 2; i++) {
+				let trElement = document.createElement('tr');
+					for (let j = 0; j < 2; j++) {
+						let tdElement = document.createElement('td');
+						tdElement.appendChild(document.createTextNode(count))
+						trElement.appendChild(tdElement)
+						count++
+					}
+				tableBody.appendChild(trElement);
+			}
+			tableElement.appendChild(tableBody);
+			let divElement = document.getElementById("table")
+			divElement.appendChild(tableElement);
 		</script>
 	</body>
 </html>
