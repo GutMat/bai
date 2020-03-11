@@ -9,19 +9,26 @@
 <body>
     <h1>Shopping List</h1>
     <p>
-        New item: <input type="text" name="item">
-        <button type="button">Add</button>
+        New item: <input type="text" name="item" id="addItem">
+        <button type="button" onclick="addItem()">Add</button>
     </p>
     <h3>List of items</h3>
-    <ol>
+    <ol id="shoppingList">
         <li>cooking oil</li>
         <li>breakfast cereal</li>
         <li>bread</li>
     </ol>
 
     <script>
-    	// a JavaScript code here ...
-
+        function addItem() {
+            let inputValue = document.getElementById("addItem").value
+            let liTag = document.createElement("li");
+			let itemName = document.createTextNode(inputValue);
+            liTag.appendChild(itemName);
+            let shoppingList = document.getElementById("shoppingList")
+            shoppingList.appendChild(liTag)
+            document.getElementById("addItem").value = "";
+        }  
     </script>
 </body>
 
