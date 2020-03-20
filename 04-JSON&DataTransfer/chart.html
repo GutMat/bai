@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gold Price Chart</title>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	</head>
+	<body>
+		<h1>Gold Price</h1>
+		<p>Click the button to display the chart</p>
+		<button onclick="displayChart()">Display chart</button>
+		<canvas id="myChart"></canvas>
+		<script>
+			function displayChart(){
+				const method = 'GET';
+				const URL = 'http://api.nbp.pl/api/cenyzlota/last/10/?format=json';
+				const xhr = new XMLHttpRequest();
+				xhr.open(method, URL, true);
+				xhr.onreadystatechange = function(){
+					if (xhr.readyState == 4) {
+						if (xhr.status == 200){
+                            const response = xhr.responseText
+                            let data = []
+                            let price = []
+							JSON.parse(response).map(node => { 
+                                data.push(node.data)
+                                price.push(node.cena)
+                            });
+                            var ctx = document.getElementById('myChart').getContext('2d');
+                            var chart = new Chart(ctx, {
+                                // The type of chart we want to create
+                                type: 'line',
+
+                                // The data for our dataset
+                                data: {
+                                    labels: data,
+                                    datasets: [{
+                                        label: 'Gold price chart',
+                                        backgroundColor: 'rgb(255, 99, 132)',
+                                        borderColor: 'rgb(255, 99, 132)',
+                                        data: price
+                                    }]
+                                },
+
+                                // Configuration options go here
+                                options: {}
+                            });
+
+						}
+						else{
+							console.log("Błąd podczas ładowania strony\n");
+						}
+					}
+				};
+				xhr.send();
+            }
+
+		</script>
+
+	</body>
+</html>
