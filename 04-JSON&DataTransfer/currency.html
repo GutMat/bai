@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Currency</title>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+	<body>
+        <h1>Currency rates</h1>
+        <div id="currency"></div>
+
+		<script>
+                let xhr1 = new XMLHttpRequest();
+                    xhr1.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let currencyInfo = JSON.parse(this.responseText)
+                        console.log(currencyInfo)
+                        console.log(currencyInfo.currency)
+                        console.log(currencyInfo.rates[0].mid)
+                        let divTag = document.getElementById("currency");
+                        let pTag = document.createElement("p")
+                        let currencyValue = document.createTextNode(`${currencyInfo.currency}: ${currencyInfo.rates[0].mid}`);
+                        pTag.appendChild(currencyValue)
+                        divTag.appendChild(pTag);
+                    }
+                };
+                xhr1.open("GET", "http://api.nbp.pl/api/exchangerates/rates/a/eur/", true);
+                xhr1.send();
+
+                let xhr2 = new XMLHttpRequest();
+                    xhr2.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let currencyInfo = JSON.parse(this.responseText)
+                        console.log(currencyInfo)
+                        console.log(currencyInfo.currency)
+                        console.log(currencyInfo.rates[0].mid)
+                        let divTag = document.getElementById("currency");
+                        let pTag = document.createElement("p")
+                        let currencyValue = document.createTextNode(`${currencyInfo.currency}: ${currencyInfo.rates[0].mid}`);
+                        pTag.appendChild(currencyValue)
+                        divTag.appendChild(pTag);
+                    }
+                };
+                xhr2.open("GET", "http://api.nbp.pl/api/exchangerates/rates/a/usd/", true);
+                xhr2.send();
+
+                let xhr3 = new XMLHttpRequest();
+                    xhr3.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let currencyInfo = JSON.parse(this.responseText)
+                        console.log(currencyInfo)
+                        console.log(currencyInfo.currency)
+                        console.log(currencyInfo.rates[0].mid)
+                        let divTag = document.getElementById("currency");
+                        let pTag = document.createElement("p")
+                        let currencyValue = document.createTextNode(`${currencyInfo.currency}: ${currencyInfo.rates[0].mid}`);
+                        pTag.appendChild(currencyValue)
+                        divTag.appendChild(pTag);
+                    }
+                };
+                xhr3.open("GET", "http://api.nbp.pl/api/exchangerates/rates/a/gbp/", true);
+                xhr3.send();
+		</script>
+
+	</body>
+</html>

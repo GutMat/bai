@@ -14,16 +14,21 @@
 				var method = 'GET';
 				var URL = 'http://api.nbp.pl/api/cenyzlota/last/30/?format=json';
 				var xhr = new XMLHttpRequest();
-				xhr.onreadystatechange = function(){display(this);};
-				xhr.open(method, URL);
+				xhr.open(method, URL, true);
+				xhr.onreadystatechange = function(){
+					if (xhr.readyState == 4) {
+						if (xhr.status == 200){
+							const response = xhr.responseText
+							console.log(response);
+							JSON.parse(response).map(node => console.log("Data: " + node.data + " cena:" + node.cena))
+						}
+						else{
+							console.log("Błąd podczas ładowania strony\n");
+						}
+					}
+				};
 				xhr.send();
 			}
-			function display(r){
-				console.log("Request state:", r.readyState);
-				console.log("Status:", r.status);
-				console.log("Status text:", r.statusText);
-				console.log("-----");
-			};
 		</script>
 
 	</body>

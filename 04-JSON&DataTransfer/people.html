@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>People</title>
+		<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>List of people</h1>
+		<p>Click the button to display person list</p>
+		<button onclick="displayData()">Display list of person</button>
+		<div id="people"></div>
+
+		<script>
+			function displayData(){
+                let divTag = document.getElementById("people");
+                let olTag = document.createElement("ol");
+                divTag.appendChild(olTag);
+				$.getJSON("./people.json", function (data) {
+                    data.map(person => {
+                        let liTag = document.createElement("li")
+                        let personalDetails = document.createTextNode(`${person.name} ${person.surname.toUpperCase()}, ${person.country}`);
+                        liTag.appendChild(personalDetails)
+                        olTag.appendChild(liTag);
+                    })
+
+				})
+			}
+		</script>
+
+	</body>
+</html>
