@@ -9,14 +9,14 @@
     <span>Name 1: {{persons.person1.name1}}</span><br>
     <span>Name 2: {{persons.person1.name2 == null ? "" : persons.person1.name2}}</span><br>
     <span>Surname: {{persons.person1.surname}}</span><br>
-    <span>PESEL: {{persons.person1.foreigner ? persons.person1.nationality : persons.person1.pesel}}</span><br>
+    <span>{{persons.person1.foreigner ? "Nationality" : "PESEL:"}} {{persons.person1.foreigner ? persons.person1.nationality : persons.person1.pesel}}</span><br>
     <span>Address: {{persons.person1.address}}</span><br>
     <br>
     <span style="font-weight: bold;">EMPLOYEE RECORD</span><br>
     <span>Name 1: {{persons.person2.name1}}</span><br>
     <span>Name 2: {{persons.person2.name2 == null ? "" : persons.person2.name2}}</span><br>
     <span>Surname: {{persons.person2.surname}}</span><br>
-    <span>PESEL: {{persons.person2.foreigner ? persons.person2.nationality : persons.person2.pesel}}</span><br>
+    <span>{{persons.person2.foreigner ? "Nationality" : "PESEL"}} {{persons.person2.foreigner ? persons.person2.nationality : persons.person2.pesel}}</span><br>
     <span>Address: {{persons.person2.address}}</span><br>
 
   </div>
