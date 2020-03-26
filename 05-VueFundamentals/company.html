@@ -4,6 +4,18 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+  <div id="app"
+      style="border: solid black 1px;
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;">
+      <span style="font-weight: bold;">{{company.toUpperCase()}}</span><br>
+      <span>{{address}}</span><br>
+      <span>{{postcode}} {{city}}</span><br>
+      <span>tel. {{landline}}, {{mobile}}</span><br>
+      <span><a :href="web">http://www.unikpol.pl</a></span>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
