@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
+
 <body>
+  <div id="app">
+    <button @click="displayChart">Display chart</button>
+    <canvas id="myChart"></canvas>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        films: [
+        languages: [
           {
             language: 'Python',
             popularity: 25.95
@@ -29,7 +36,46 @@
             language: 'Php',
             popularity: 7.37
           }
-        ] 
+        ]
+      },
+      methods: {
+        getTitles: function () {
+          let languagesTitle = []
+          for (let index = 0; index < this.languages.length; index++) {
+            languagesTitle.push(this.languages[index].language)
+          }
+          return languagesTitle
+        },
+        getPopularity: function () {
+          let languagesValue = []
+          for (let index = 0; index < this.languages.length; index++) {
+            languagesValue.push(this.languages[index].popularity)
+          }
+          return languagesValue
+        },
+        displayChart: function () {
+          let titles = this.getTitles();
+          let popularity = this.getPopularity();
+          var ctx = document.getElementById('myChart').getContext('2d');
+          var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+              datasets: [{
+                data: popularity,
+                backgroundColor: [
+                'red',
+                'blue',
+                'green',
+                'yellow',
+                'black'
+            ],
+              }],
+
+              // These labels appear in the legend and in the tooltips when hovering different arcs
+              labels: titles
+            }
+          })
+        }
       }
     });
   </script>

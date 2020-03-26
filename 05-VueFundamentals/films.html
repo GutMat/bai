@@ -1,11 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    table {
+      border-collapse: collapse;
+      text-align: left;
+    }
+    
+    table, td, th {
+      border: 1px solid black;
+    }
+    td {
+      width: 200px;
+    }
+    </style>
 <body>
+  <div id="app">
+    <table>
+      <thead style="font-weight: bold;">
+        <tr>
+          <th v-for="title in titles">
+              {{title}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="film in films">
+          <td v-for="title in film">
+            {{title}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <script>
-    var app = new Vue({
+    new Vue({
       el: '#app',
       data: {
         films: [
@@ -33,10 +64,17 @@
             director: 'King Vidor',
             budget: 6000000
           }
-        ] 
-        }
+        ],
+        titles: [
+          'Title',
+          'Year',
+          'Director',
+          'Budget'
+        ]
       }
     });
+    const films = this.films
   </script>
 </body>
+
 </html>

@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
+  <div id="app">
+    <span style="font-weight: bold;">DO WYKONANIA</span>
+    <ol>
+      <li v-for="thing in sortArray">{{thing}}</li>
+    </ol>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
@@ -12,10 +20,17 @@
           'Purchase two tickets to cinema',
           'Feed cat',
           'Pay cable bill',
-          'Go shopping'
-      }
+          'Go shopping',
+        ]
+      },
+      computed: {
+        sortArray: function () {
+          return this.todo.sort()
+        }
+      },
     });
   </script>
 
 </body>
+
 </html>
