@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <form @submit="displayData" required>
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title" v-model="title" required><br>
+            <label for="name">Author name:</label><br>
+            <input type="text" id="name" name="name" v-model="name" required><br>
+            <label for="surname">Author surname:</label><br>
+            <input type="text" id="surname" name="surname" v-model="surname" required><br><br>
+            <input type="submit" value="Zapisz">
+        </form>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                surname: '',
+                title: ''
+            },
+            methods: {
+                displayData: function () {
+                    console.log("Name: " + this.name + "\n" + "Surname: " + this.surname + "\n" + "Title: " + this.title)
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

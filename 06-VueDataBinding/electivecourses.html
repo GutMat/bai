@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <label for="course1">Metody metaheurystyczne</label>
+        <input type="checkbox" 
+            id="course1"
+            value="Metody metaheurystyczne"
+            v-model="checkedCourses"><br>
+        <label for="course2">Systemy rozmyte</label>
+        <input type="checkbox" 
+            id="course2" 
+            value="Systemy rozmyte" 
+            v-model="checkedCourses"><br>
+        <label for="course3">Systemy uczące się</label>
+        <input type="checkbox" 
+            id="course3" 
+            value="Systemy uczące się" 
+            v-model="checkedCourses"><br>
+        <label for="course4">Zarządzanie strategiczne</label>
+        <input type="checkbox" 
+            id="course4" 
+            value="Zarządzanie strategiczne" 
+            v-model="checkedCourses"><br>      
+        <label for="course5">Przetwarzanie języka naturalnego</label>
+        <input type="checkbox" 
+            id="course5" 
+            value="Przetwarzanie języka naturalnego" 
+            v-model="checkedCourses"><br>
+        <br>
+        <span>Checked names: {{ checkedCourses.length }}</span>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                checkedCourses: []
+            }
+        })
+    </script>
+</body>
+
+</html>
