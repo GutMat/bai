@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Curriculum vitae</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <h1>Curriculum vitae</h1>
+        <form v-on:submit.prevent>
+            <label :for="personalDetails.name">Name:</label><br>
+            <input type="text"
+                :id="personalDetails.name"
+                :name="personalDetails.name"
+                v-model="personalDetails.name"
+                required><br><br>
+            <label :for="personalDetails.surname">Surname:</label><br>
+            <input type="text"
+                :id="personalDetails.surname"
+                :name="personalDetails.surname"
+                v-model="personalDetails.surname"
+                required><br><br>
+            <label :for="personalDetails.age">Age:</label><br>
+            <input type="number"
+                :id="personalDetails.age"
+                :name="personalDetails.age"
+                v-model.number="personalDetails.age"
+                required><br><br>
+            <span>Sex</span><br>
+            <label for="man">Man</label>
+            <input type="radio"
+                name="sex"
+                id="man"
+                value="man"
+                v-model="selectedSex">
+            <label for="one">Woman</label>
+            <input type="radio"
+                name="sex"
+                id="woman"
+                value="woman"
+                v-model="selectedSex"><br><br>
+            <span>Education level</span><br>
+            <select v-model="selectedEducation">
+                <option v-for="educationLevel in educationLevels"
+                    :id="educationLevel.value"
+                    :value="educationLevel.value">
+                    {{ educationLevel.text }}
+                </option>
+            </select><br><br>
+            <span>Skills</span>
+            <div v-for="skill in skills">
+                <input type="checkbox"
+                    :id="skill.value"
+                    :value="skill.value"
+                    v-model="selectedSkills">
+                <label :for="skills.value">{{skill.text}}</label>
+            </div><br>
+            <button type="submit"
+                @click="displayData">Submit and display
+            </button>
+            <button @click="saveLocalStorageData">
+                Save data to local storage
+            </button>
+            <button @click="displayLocaclStorageData">
+                Read
+            </button>
+            <br><br>
+            <div v-if=isDisplayed>
+                <h3>CV Data from form</h3>
+                <span>Name: {{personalDetails.name}}</span><br>
+                <span>Surname: {{personalDetails.surname}}</span><br>
+                <span>Age: {{personalDetails.age}}</span><br>
+                <span>Sex: {{selectedSex}}</span><br>
+                <span>Education level: {{selectedEducation}}</span><br>
+                <span>Skills:</span>
+                <ul>
+                    <li v-for="skill in selectedSkills">{{skill}}</li>
+                </ul>
+            </div>
+            <div id="localStorage">
+            </div>
+        </form>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                personalDetails: {
+                    age: '',
+                    name: '',
+                    surname: ''
+                },
+                selectedSex: '',
+                selectedEducation: '',
+                educationLevels: [{
+                        text: 'Unletteredness',
+                        value: 'unletteredness'
+                    },
+                    {
+                        text: 'Primary',
+                        value: 'primary'
+                    },
+                    {
+                        text: 'Secondary',
+                        value: 'secondary'
+                    },
+                    {
+                        text: 'Higher',
+                        value: 'higher'
+                    }
+                ],
+                skills: [{
+                    text: 'Computer skills',
+                    value: 'computer'
+                }, {
+                    text: 'Driving licence',
+                    value: 'driving'
+                }, {
+                    text: 'Creativity',
+                    value: 'creativity'
+                }, {
+                    text: 'Teamwork skills',
+                    value: 'teamwork'
+                }],
+                selectedSkills: [],
+                isDisplayed: false,
+                isDisplayedLocal: false
+            },
+            methods: {
+                displayData: function () {
+                    this.isDisplayed = true
+                    console.log(
+                        "Name: " + this.personalDetails.name +
+                        "\nSurname: " + this.personalDetails.surname +
+                        "\nAge: " + this.personalDetails.age +
+                        "\nSex: " + this.selectedSex +
+                        "\nEducation level: " + this.selectedEducation +
+                        "\nSkills: " + this.selectedSkills
+                    );
+                },
+                saveLocalStorageData: function () {
+                    this.isDisplayed = false
+                    if (typeof (Storage) !== "undefined") {
+                        localStorage.setItem("name", this.personalDetails.name);
+                        localStorage.setItem("surname", this.personalDetails.surname);
+                        localStorage.setItem("age", this.personalDetails.age);
+                        localStorage.setItem("sex", this.selectedSex);
+                        localStorage.setItem("educationLevel", this.selectedEducation);
+                        localStorage.setItem("skills", this.selectedSkills);
+                    } else {
+                        document.getElementById("localStorage").innerHTML =
+                            "Sorry, your browser does not support Web Storage...";
+                    }
+                },
+                displayLocaclStorageData: function () {
+                    if (typeof (Storage) !== "undefined") {
+
+                        console.log(localStorage.getItem("name"))
+                        console.log(localStorage.getItem("surname"))
+                        console.log(localStorage.getItem("age"))
+                        console.log(localStorage.getItem("sex"))
+                        console.log(localStorage.getItem("educationLevel"))
+                        console.log(localStorage.getItem("skills"))
+
+                        const divLocal = document.getElementById("localStorage")
+
+                        const h3Ele = document.createElement("h3");
+                        const text = document.createTextNode("CV Data from local storage");
+                        h3Ele.appendChild(text);
+                        divLocal.appendChild(h3Ele)
+
+                        const pName = document.createElement("p");
+                        const name = document.createTextNode("Name: " + localStorage.getItem("name"));
+                        pName.appendChild(name);
+                        divLocal.appendChild(pName);
+
+                        const pSurname = document.createElement("p");
+                        const surname = document.createTextNode("Surname: " + localStorage.getItem(
+                            "surname"));
+                        pSurname.appendChild(surname);
+                        divLocal.appendChild(pSurname);
+
+                        const pAge = document.createElement("p");
+                        const age = document.createTextNode("Age: " + localStorage.getItem(
+                            "age"));
+                        pAge.appendChild(age);
+                        divLocal.appendChild(pAge);
+
+                        const pSex = document.createElement("p");
+                        const sex = document.createTextNode("Sex: " + localStorage.getItem(
+                            "sex"));
+                        pSex.appendChild(sex);
+                        divLocal.appendChild(pSex);
+
+                        const pEducation = document.createElement("p");
+                        const education = document.createTextNode("Education: " + localStorage.getItem("educationLevel"));
+                        pEducation.appendChild(education);
+                        divLocal.appendChild(pEducation);
+
+                        const pSkills = document.createElement("p");
+                        const skills = document.createTextNode("Skills: " + localStorage.getItem(
+                            "skills"));
+                        pSkills.appendChild(skills);
+                        divLocal.appendChild(pSkills);
+                    } else {
+                        document.getElementById("localStorage").innerHTML =
+                            "Sorry, your browser does not support Web Storage...";
+                    }
+
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>
