@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <film title="WŁADCA PIERŚCIENI: DRUŻYNA PIERŚCIENIA"
+            director="Peter Jackson"
+            year="2001"></film>
+        <film title="WŁADCA PIERŚCIENI: DWIE WIEŻE"
+            director="Peter Jackson"
+            year="2002"></film>
+        <film title="WŁADCA PIERŚCIENI: POWRÓT KRÓLA"
+            director="Peter Jackson"
+            year="2003"></film>
+    </div>
+    <script>
+        Vue.component('film', {
+            template: `
+      <div>
+        <h3>Title: {{title}}</h3>
+        <h5>Director: {{director}}</h5>
+        <h5>Production year: {{year}}</h5>
+      </div>
+  `,
+            props: ['title', 'director', 'year']
+        });
+        var vm = new Vue({
+            el: '#app'
+        });
+    </script>
+
+</body>
+
+</html>

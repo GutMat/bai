@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <binary decimal="17"></binary>
+        <binary decimal="8"></binary>
+        <binary decimal="170"></binary>
+        <binary decimal="204"></binary>
+        <binary decimal="3855"></binary>
+    </div>
+    <script>
+        Vue.component('binary', {
+            template: `
+      <div>
+        <p>{{ decimal }}(10) = {{ dec2bin(decimal) }}(2)</p>
+      </div>
+  `,
+            props: ['decimal'],
+            methods: {
+                dec2bin(dec) {
+                    return (dec >>> 0).toString(2);
+                }
+            },
+        });
+        var vm = new Vue({
+            el: '#app'
+        });
+    </script>
+
+</body>
+
+</html>
