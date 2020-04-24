@@ -17,12 +17,12 @@
     <script>
         Vue.component('currency', {
             template: `
-      <div>
-        <h3>Currency: {{ currency }}</h3>
-        <h4>Code: {{ code }}</h4>
-        <h4>Mid: {{ mid }}</h4>
-      </div>
-  `,
+                <div style="border: 1px solid; padding: 10px; margin: 10px">
+                    <h3>Currency: {{ currency }}</h3>
+                    <h4>Code: {{ code }}</h4>
+                    <h4>Mid: {{ mid }}</h4>
+                </div>
+            `,
             props: ['currency', 'code', 'mid']
         });
         var vm = new Vue({
@@ -31,7 +31,7 @@
                 return {
                     currency: []
                 }
-            },  
+            },
             mounted() {
                 axios
                     .get('http://api.nbp.pl/api/exchangerates/tables/a/?format=json')

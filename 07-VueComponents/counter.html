@@ -14,12 +14,12 @@
     <script>
         Vue.component('counter', {
             template: `
-      <div>
-        <p>Value: {{ counter }}</p>
-        <button @click=counter++>Add</button>
-        <button @click=counter-->Subtract</button>
-      </div>
-  `,
+                <div>
+                    <p>Value: {{ counter }}</p>
+                    <button @click=counter++>Add</button>
+                    <button @click=counter-->Subtract</button>
+                </div>
+            `,
             data() {
                 return {
                     counter: 0
@@ -28,12 +28,12 @@
         });
         Vue.component('counter-computed', {
             template: `
-      <div>
-        <p>Value: {{ counter }}</p>
-        <button @click=increment>Add</button>
-        <button @click=decrement>Subtract</button>
-      </div>
-  `,
+                <div>
+                    <p>Value: {{ counter }}</p>
+                    <button @click=increment>Add</button>
+                    <button @click=decrement>Subtract</button>
+                </div>
+            `,
             data() {
                 return {
                     counter: 0
